@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>MindCare — Cadastro</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body>
+    <div class="bg-animated" aria-hidden="true">
+        <div class="orb orb-1"></div>
+        <div class="orb orb-2"></div>
+        <div class="orb orb-3"></div>
+    </div>
+    <div id="motionBg" class="motion-bg" aria-hidden="true"></div>
+
+    <header id="siteHeader">
+        <nav>
+            <div class="logo" style="cursor:pointer">❤️ MindCare</div>
+            <div style="margin-left:auto; display:flex; gap:.6rem; align-items:center">
+                <button id="loginBtn" class="btn">Entrar</button>
+                <button id="registerBtn" class="btn primary">Cadastrar</button>
+                <button id="dashboardBtn" class="btn" style="display:none;">Dashboard</button>
+            </div>
+        </nav>
+    </header>
+
+    <section style="min-height:100vh; display:flex; align-items:center; justify-content:center;">
+        <div class="card" style="max-width:480px; width:100%;">
+            <h2 class="center">📝 Criar conta</h2>
+
+            <label>Tipo de conta:</label>
+            <select id="regType">
+                <option value="user">Usuário</option>
+                <option value="professional">Profissional</option>
+            </select>
+
+            <label>Nome completo:</label>
+            <input id="regName" type="text" placeholder="Seu nome" />
+
+            <label>Email:</label>
+            <input id="regEmail" type="email" placeholder="seuemail@email.com" />
+
+            <label>Senha:</label>
+            <input id="regPassword" type="password" placeholder="********" />
+
+            <div id="proFields" style="display:none; margin-top:.6rem;">
+                <label>Registro Profissional (CRP / CRM):</label>
+                <input id="regCRM" type="text" placeholder="Ex.: CRP 123456" />
+            </div>
+
+            <button id="registerSubmit" class="btn primary" style="width:100%; margin-top:1rem;">Criar conta</button>
+
+            <p class="center" style="margin-top:1rem;">Já possui conta? <a href="login.html"
+                    style="color:var(--primary)">Entrar</a></p>
+        </div>
+    </section>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            // LÓGICA: Mostrar/esconder campo CRM
+            const regType = document.getElementById("regType");
+            const proFields = document.getElementById("proFields");
+
+            if (regType && proFields) {
+                regType.addEventListener("change", () => {
+                    proFields.style.display = regType.value === "professional" ? "block" : "none";
+                });
+                proFields.style.display = regType.value === "professional" ? "block" : "none";
+            }
+
+            // --- LÓGICA DE CADASTRO SIMULADA ---
+            const registerSubmit = document.getElementById("registerSubmit");
+            if (registerSubmit) {
+                registerSubmit.onclick = async (e) => {
+                    e.preventDefault();
+
+                    // CORREÇÃO APLICADA AQUI: Adicionando .trim()
+                    const type = document.getElementById("regType").value.trim();
+
+                    const name = document.getElementById("regName").value.trim();
+                    const email = document.getElementById("regEmail").value.trim();
+                    const password = document.getElementById("regPassword").value;
+                    let crm = null;
+
+                    if (type === 'professional') {
+                        crm = document.getElementById("regCRM").value.trim();
+                        if (!crm) {
+                            return showToast("Preencha o Registro Profissional (CRP/CRM).", "error");
+                        }
+                    }
+
+                    if (!name || !email || !password || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+                        return showToast("Preencha e-mail e senha corretamente.", "error");
+                    }
+
+                    // Chamada SIMULADA (usando o jsonPost do script.js)
+                    const data = await jsonPost({
+                        action: 'register',
+                        type,
+                        name,
+                        email,
+                        password,
+                        crm
+                    });
+
+                    if (data.success && data.user) {
+                        // userRole é o 'type' limpo
+                        const userRole = type;
+
+                        // O objeto salvo deve usar o 'userRole' limpo
+                        saveUserToLocal({
+                            id: 99,
+                            name: name,
+                            email: email,
+                            role: userRole,
+                            crm: crm
+                        });
+
+                        showToast(`Conta de ${name} criada! Redirecionando...`, "success");
+
+                        // Redireciona: Agora esta condição deve funcionar corretamente
+                        const targetPage = userRole === 'professional' ? 'dashboard-pro.html' :
+                            'dashboard-user.html';
+                        window.location.href = targetPage;
+                    } else {
+                        showToast("Erro de cadastro simulado. Tente novamente.", "error");
+                    }
+                };
+            }
+        });
+    </script>
+</body>
+
+</html>
+<script src="js/script.js"></script>
+</body>
+
+</html>

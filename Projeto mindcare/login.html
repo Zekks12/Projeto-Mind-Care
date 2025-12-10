@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<script src="js/script.js"></script>
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        const loginSubmit = document.getElementById("loginSubmit");
+
+        if (loginSubmit) {
+            loginSubmit.onclick = async (e) => {
+                e.preventDefault();
+
+                const email = document.getElementById("email").value.trim();
+                const password = document.getElementById("password").value;
+
+                if (!email || !password) {
+                    return showToast("Preencha todos os campos.", "error");
+                }
+
+                // --- SIMULAÇÃO DE LOGIN (Chama o mock do script.js) ---
+                // Usamos a função mock do script.js para obter o objeto do usuário simulado
+                const data = await jsonPost({
+                    action: 'login',
+                    email,
+                    password
+                });
+
+                if (data.success && data.user) {
+                    saveUserToLocal(data.user); // Salva o objeto
+                    showToast(`Login de ${data.user.name} realizado com sucesso!`, "success");
+
+                    // Redireciona
+                    const targetPage = data.user.role === 'professional' ? 'dashboard-pro.html' :
+                        'dashboard-user.html';
+                    window.location.href = targetPage;
+                } else {
+                    showToast("Erro de login simulado. Tente novamente.", "error");
+                }
+            };
+        }
+    });
+</script>
+</body>
+
+</html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>MindCare — Login</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body>
+    <div class="bg-animated" aria-hidden="true">
+        <div class="orb orb-1"></div>
+        <div class="orb orb-2"></div>
+        <div class="orb orb-3"></div>
+    </div>
+    <div id="motionBg" class="motion-bg" aria-hidden="true"></div>
+
+    <header id="siteHeader">
+        <nav>
+            <div class="logo" style="cursor:pointer">❤️ MindCare</div>
+            <div style="margin-left:auto; display:flex; gap:.6rem; align-items:center">
+                <button id="loginBtn" class="btn">Entrar</button>
+                <button id="registerBtn" class="btn primary">Cadastrar</button>
+                <button id="dashboardBtn" class="btn" style="display:none;">Dashboard</button>
+            </div>
+        </nav>
+    </header>
+
+    <section style="min-height:100vh; display:flex; align-items:center; justify-content:center;">
+        <div class="card" style="max-width:420px; width:100%;">
+            <h2 class="center">🔐 Entrar</h2>
+
+            <label>Email:</label>
+            <input id="email" type="email" placeholder="seuemail@email.com" />
+
+            <label>Senha:</label>
+            <input id="password" type="password" placeholder="********" />
+
+            <button id="loginSubmit" class="btn primary" style="width:100%; margin-top:1rem;">Entrar</button>
+
+            <p class="center" style="margin-top:1rem;">Não tem conta? <a href="register.html"
+                    style="color:var(--primary)">Cadastrar</a></p>
+        </div>
+    </section>
+    <script src="js/script.js"></script>
+
+    <script>
+        // ESTA LÓGICA SOBRESCREVE A DO script.js para GARANTIR que funcione.
+        document.addEventListener("DOMContentLoaded", () => {
+            const loginSubmit = document.getElementById("loginSubmit");
+
+            if (loginSubmit) {
+                loginSubmit.onclick = async (e) => {
+                    e.preventDefault(); // Impede o comportamento padrão do formulário
+
+                    const email = document.getElementById("email").value.trim();
+                    const password = document.getElementById("password").value;
+
+                    if (!email || !password) {
+                        return showToast("Preencha todos os campos.", "error");
+                    }
+
+                    // --- SIMULAÇÃO DE LOGIN ---
+                    const isPro = email.includes('pro');
+                    const userRole = isPro ? "professional" : "user";
+                    const userName = isPro ? "Dra. Simulação" : "Usuário Simulado";
+
+                    // Salva o usuário SIMULADO (usando as funções do script.js)
+                    saveUserToLocal({
+                        id: 99,
+                        name: userName,
+                        email: email,
+                        role: userRole
+                    });
+
+                    showToast(`Login de ${userName} realizado com sucesso!`, "success");
+
+                    // Redireciona
+                    const targetPage = userRole === 'professional' ? 'dashboard-pro.html' :
+                        'dashboard-user.html';
+                    window.location.href = targetPage;
+                };
+            }
+        });
+    </script>
+</body>
+
+</html>
+<script src="js/script.js"></script>
+</body>
+
+</html>

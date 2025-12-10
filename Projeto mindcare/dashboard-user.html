@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<script src="js/script.js"></script>
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        // Apenas para o dashboard do usuário:
+        if (document.getElementById('moodGrid')) {
+            setupMoodSelection();
+        }
+        // Inclua aqui as chamadas para carregar lista de hábitos, sessões, etc. (se houver)
+        // Ex: loadHabits(); 
+    });
+</script>
+</body>
+
+</html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>MindCare — Dashboard do Usuário</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body>
+    <div class="bg-animated" aria-hidden="true">
+        <div class="orb orb-1"></div>
+        <div class="orb orb-2"></div>
+        <div class="orb orb-3"></div>
+    </div>
+    <div id="motionBg" class="motion-bg" aria-hidden="true"></div>
+
+    <header id="siteHeader">
+        <nav>
+            <div class="logo" style="cursor:pointer">❤️ MindCare</div>
+            <ul class="nav-links">
+                <li><a href="index.html">Início</a></li>
+                <li><a href="#humor">Meu Humor</a></li>
+                <li><a href="#habitos">Hábitos</a></li>
+            </ul>
+            <div style="margin-left:auto; display:flex; gap:.6rem; align-items:center">
+                <button id="loginBtn" class="btn">Entrar</button>
+                <button id="registerBtn" class="btn primary">Cadastrar</button>
+                <button data-action="logout" class="btn">Logout</button>
+            </div>
+        </nav>
+    </header>
+
+    <section style="padding-top:6.5rem;">
+        <div class="container">
+            <h1>👋 Bem-vindo(a), <span id="userName"></span></h1>
+
+            <div class="card" style="margin-top:1rem;">
+                <h2>Registrar Humor</h2>
+                <div class="mood-grid" id="moodGrid">
+                    <div class="mood-option" data-mood="good">
+                        <div class="mood-icon">😊</div>
+                        <div>Bem</div>
+                    </div>
+                    <div class="mood-option" data-mood="neutral">
+                        <div class="mood-icon">😐</div>
+                        <div>Normal</div>
+                    </div>
+                    <div class="mood-option" data-mood="bad">
+                        <div class="mood-icon">😔</div>
+                        <div>Difícil</div>
+                    </div>
+                </div>
+                <textarea id="moodNote" placeholder="Descreva como está se sentindo..."></textarea>
+                <button id="saveMoodBtn" class="btn primary" style="margin-top:.8rem;">Salvar Humor</button>
+            </div>
+
+            <div class="card" style="margin-top:1rem;">
+                <h2>Hábitos</h2>
+                <div id="habitList" style="margin-bottom:.6rem;">Carregando hábitos...</div>
+                <input id="habitInput" type="text" placeholder="Novo hábito" />
+                <button id="saveHabitBtn" class="btn" style="margin-top:.6rem;">Adicionar</button>
+            </div>
+
+            <div class="card" style="margin-top:1rem;">
+                <h2>Suas Consultas</h2>
+                <div id="sessionList">Carregando consultas...</div>
+            </div>
+
+        </div>
+    </section>
+
+    <script src="js/script.js"></script>
+</body>
+
+</html>

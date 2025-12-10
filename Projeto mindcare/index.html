@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<script src="js/script.js"></script>
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        setupMoodSelection();
+        // Nenhuma lógica de login/cadastro é necessária aqui, o script.js já trata do header e do redirecionamento.
+    });
+</script>
+</body>
+
+</html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>MindCare – Início</title>
+    <meta name="description" content="MindCare – Plataforma de Saúde Mental" />
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body>
+    <!-- Animated / Floating orbs -->
+    <div class="bg-animated" aria-hidden="true">
+        <div class="orb orb-1"></div>
+        <div class="orb orb-2"></div>
+        <div class="orb orb-3"></div>
+    </div>
+
+    <!-- Motion overlay -->
+    <div id="motionBg" class="motion-bg" aria-hidden="true"></div>
+
+    <!-- Header -->
+    <header id="siteHeader" aria-label="Barra superior">
+        <nav>
+            <div class="logo" style="cursor:pointer"> <span>❤️</span><span>MindCare</span> </div>
+
+            <ul class="nav-links" role="menubar">
+                <li><a href="#inicio">Início</a></li>
+                <li><a href="#humor">Meu Humor</a></li>
+                <li><a href="#habitos">Hábitos</a></li>
+                <li><a href="#artigos">Artigos</a></li>
+                <li><a href="#suporte">Suporte</a></li>
+            </ul>
+
+            <div style="display:flex; gap:0.6rem; align-items:center; margin-left:auto">
+                <button id="loginBtn" class="btn">Entrar</button>
+                <button id="registerBtn" class="btn primary">Cadastrar</button>
+                <button id="dashboardBtn" class="btn" style="display:none;">Dashboard</button>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Hero -->
+        <section id="inicio" class="hero" role="region" aria-labelledby="heroTitle">
+            <div class="container">
+                <h1 id="heroTitle">Cuide da sua<br>saúde mental</h1>
+                <p>Um espaço de acolhimento, educação e autocuidado emocional</p>
+                <a class="cta-button" href="#humor">Começar agora</a>
+            </div>
+        </section>
+
+        <!-- Mood -->
+        <section id="humor" role="region" aria-labelledby="moodTitle">
+            <div class="container card">
+                <h2 id="moodTitle">📅 Como você está hoje?</h2>
+                <p class="subtitle">Registre seu estado emocional e acompanhe seu bem-estar ao longo do tempo</p>
+                <div class="mood-grid" id="moodGrid">
+                    <div class="mood-option" data-mood="good">
+                        <div class="mood-icon">😊</div>
+                        <div>Bem</div>
+                    </div>
+                    <div class="mood-option" data-mood="neutral">
+                        <div class="mood-icon">😐</div>
+                        <div>Normal</div>
+                    </div>
+                    <div class="mood-option" data-mood="bad">
+                        <div class="mood-icon">😔</div>
+                        <div>Difícil</div>
+                    </div>
+                </div>
+                <textarea id="moodNote" placeholder="Descreva como está se sentindo... (opcional)"
+                    aria-label="Descrição do humor"></textarea>
+            </div>
+        </section>
+
+        <!-- Habits -->
+        <section id="habitos" role="region" aria-labelledby="habitsTitle">
+            <div class="container card">
+                <h2 id="habitsTitle">📈 Hábitos Saudáveis</h2>
+                <p class="subtitle">Marque os hábitos que você praticou hoje</p>
+                <div class="habits-grid" id="habitsGrid">
+                    <div class="habit-card" data-habit="leitura">
+                        <span class="habit-icon">📚</span>
+                        <h3>Leitura</h3>
+                        <p>15 minutos</p>
+                    </div>
+                    <div class="habit-card" data-habit="exercicio">
+                        <span class="habit-icon">🏃</span>
+                        <h3>Exercício</h3>
+                        <p>30 minutos</p>
+                    </div>
+                    <div class="habit-card" data-habit="hidratacao">
+                        <span class="habit-icon">💧</span>
+                        <h3>Hidratação</h3>
+                        <p>2 litros</p>
+                    </div>
+                    <div class="habit-card" data-habit="sono">
+                        <span class="habit-icon">🌙</span>
+                        <h3>Sono Regular</h3>
+                        <p>7-8 horas</p>
+                    </div>
+                </div>
+                <div class="habit-counter">
+                    <p><strong id="habitCount">0</strong> hábitos praticados hoje</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Articles -->
+        <section id="artigos" role="region" aria-labelledby="articlesTitle">
+            <div class="container">
+                <h2 id="articlesTitle" class="center">📖 Conteúdo Educativo</h2>
+                <div class="articles-grid">
+                    <article class="article-card">
+                        <div class="article-tag">Ansiedade</div>
+                        <h3>Reconhecendo Sinais de Ansiedade</h3>
+                        <p>A ansiedade pode se manifestar de diferentes formas no corpo e na mente. Aprenda a
+                            identificar os primeiros sinais - como taquicardia, pensamentos acelerados e tensão muscular
+                            - e descubra estratégias práticas para lidar com momentos de crise no dia a dia.</p>
+                        <a href="#" class="read-more">Ler artigo completo →</a>
+                    </article>
+                    <article class="article-card">
+                        <div class="article-tag">Sono</div>
+                        <h3>A Importância do Sono Regulado</h3>
+                        <p>O sono é fundamental para o equilíbrio emocional e a saúde mental. Descubra como a privação
+                            de sono afeta seu humor, concentração e bem-estar, além de técnicas comprovadas para
+                            melhorar a qualidade do seu descanso noturno.</p>
+                        <a href="#" class="read-more">Ler artigo completo →</a>
+                    </article>
+                    <article class="article-card">
+                        <div class="article-tag">Bem-estar</div>
+                        <h3>Mindfulness para Iniciantes</h3>
+                        <p>Práticas simples de atenção plena que podem transformar sua relação com o presente. Aprenda
+                            exercícios de respiração, meditação guiada e técnicas de grounding que ajudam a reduzir o
+                            estresse e aumentar a consciência emocional.</p>
+                        <a href="#" class="read-more">Ler artigo completo →</a>
+                    </article>
+                    <article class="article-card">
+                        <div class="article-tag">Tecnologia</div>
+                        <h3>Equilíbrio Digital</h3>
+                        <p>Como encontrar um ponto de equilíbrio saudável entre o mundo digital e o bem-estar emocional.
+                            Estratégias para reduzir o tempo de tela, estabelecer limites saudáveis com redes sociais e
+                            recuperar conexões autênticas.</p>
+                        <a href="#" class="read-more">Ler artigo completo →</a>
+                    </article>
+                    <article class="article-card">
+                        <div class="article-tag">Estresse</div>
+                        <h3>Lidando com o Burnout</h3>
+                        <p>Identificar e prevenir o esgotamento emocional relacionado ao trabalho e às demandas do
+                            cotidiano. Conheça os sinais de alerta, entenda as fases do burnout e descubra caminhos para
+                            recuperar sua energia e motivação.</p>
+                        <a href="#" class="read-more">Ler artigo completo →</a>
+                    </article>
+                    <article class="article-card">
+                        <div class="article-tag">Autoestima</div>
+                        <h3>Construindo Autoestima</h3>
+                        <p>Estratégias cientificamente comprovadas para fortalecer a confiança em si mesmo e desenvolver
+                            uma relação mais saudável consigo. Exercícios práticos de autocompaixão, diálogo interno
+                            positivo e celebração de conquistas.</p>
+                        <a href="#" class="read-more">Ler artigo completo →</a>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- Support -->
+        <section id="suporte" role="region" aria-labelledby="supportTitle">
+            <div class="container support-box">
+                <h2 id="supportTitle">❤️ Você não está sozinho</h2>
+                <p style="color: rgba(255,255,255,0.8); margin: 1rem 0;">
+                    Se você está passando por um momento difícil e precisa de ajuda imediata,<br>
+                    entre em contato com o Centro de Valorização da Vida
+                </p>
+                <div class="support-number">188</div>
+                <p style="color: rgba(255,255,255,0.7);">
+                    Atendimento gratuito 24 horas por dia<br>
+                    Ligação, chat online ou e-mail
+                </p>
+                <div
+                    style="margin-top: 2rem; padding: 1.5rem; background: rgba(255,255,255,0.05); border-radius: 12px;">
+                    <p style="font-weight: 600; margin-bottom: 0.8rem;">Outras opções de suporte:</p>
+                    <p style="font-size: 0.95rem; line-height: 1.8;">
+                        • CAPS - Centros de Atenção Psicossocial<br>
+                        • UBS - Unidade Básica de Saúde do seu bairro<br>
+                        • Hospital mais próximo em caso de emergência
+                    </p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p style="margin-bottom: 0.5rem;">MindCare 💜 – Plataforma de Saúde Mental Preventiva</p>
+        <p style="font-size: 0.9rem;">Projeto Integrador 2025/2 - Instituto Federal de Brasília</p>
+        <p style="font-size: 0.85rem; margin-top: 1rem; color: rgba(255,255,255,0.5);">
+            Este sistema não substitui o acompanhamento profissional.<br>
+            Busque ajuda de psicólogos e psiquiatras quando necessário.
+        </p>
+    </footer>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Lógica para redirecionar o botão 'Entrar'
+            const loginBtn = document.getElementById('loginBtn');
+            if (loginBtn) {
+                loginBtn.addEventListener('click', () => {
+                    window.location.href = 'login.html';
+                });
+            }
+
+            // Lógica para redirecionar o botão 'Cadastrar'
+            const registerBtn = document.getElementById('registerBtn');
+            if (registerBtn) {
+                registerBtn.addEventListener('click', () => {
+                    window.location.href = 'register.html';
+                });
+            }
+        });
+    </script>
+    <script src="js/script.js"></script>
+</body>
+
+</html>

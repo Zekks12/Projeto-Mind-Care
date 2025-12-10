@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<script src="js/script.js"></script>
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        // Apenas para o dashboard do usuário:
+        if (document.getElementById('moodGrid')) {
+            setupMoodSelection();
+        }
+        // Inclua aqui as chamadas para carregar lista de hábitos, sessões, etc. (se houver)
+        // Ex: loadHabits(); 
+    });
+</script>
+</body>
+
+</html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>MindCare — Dashboard Profissional</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body>
+    <div class="bg-animated" aria-hidden="true">
+        <div class="orb orb-1"></div>
+        <div class="orb orb-2"></div>
+        <div class="orb orb-3"></div>
+    </div>
+    <div id="motionBg" class="motion-bg" aria-hidden="true"></div>
+
+    <header id="siteHeader">
+        <nav>
+            <div class="logo" style="cursor:pointer">🧠 MindCare Pro</div>
+            <ul class="nav-links">
+                <li><a href="index.html">Início</a></li>
+                <li><a href="#pacientes">Pacientes</a></li>
+                <li><a href="#artigos">Artigos</a></li>
+            </ul>
+            <div style="margin-left:auto; display:flex; gap:.6rem; align-items:center">
+                <button id="loginBtn" class="btn">Entrar</button>
+                <button id="registerBtn" class="btn primary">Cadastrar</button>
+                <button data-action="logout" class="btn">Logout</button>
+            </div>
+        </nav>
+    </header>
+
+    <section style="padding-top:6.5rem;">
+        <div class="container">
+            <h1>👨‍⚕️ Painel do Profissional</h1>
+
+            <div class="card" style="margin-top:1rem;">
+                <h2>📋 Próximos atendimentos</h2>
+                <div id="nextSessions">Carregando...</div>
+            </div>
+
+            <div class="card" style="margin-top:1rem;">
+                <h2>📊 Estatísticas rápidas</h2>
+                <p>Pacientes ativos: <strong id="statsPatients">0</strong></p>
+                <p>Artigos publicados: <strong id="statsArticles">0</strong></p>
+            </div>
+
+        </div>
+    </section>
+
+    <script src="js/script.js"></script>
+</body>
+
+</html>
