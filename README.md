@@ -12,13 +12,13 @@ MindCare é uma plataforma abrangente e segura dedicada à promoção da **saúd
 
 ## Funcionalidades Principais
 
-| Módulo | Emoji | Descrição |
-| :--- | :---: | :--- |
-| **Atendimento Profissional** | | Conexão direta para atendimento com profissionais de saúde mental (psicólogos, terapeutas, etc.). |
-| **Diário Emocional** | | Ferramenta para o usuário registrar e acompanhar seus sentimentos e estados emocionais ao longo do tempo. |
-| **Base de Conhecimento** | | Conteúdo educativo sobre saúde mental, mecanismos de enfrentamento e temas como suicídio e cyberbullying. |
-| **Apoio Digital** |  | Foco na conscientização e combate aos problemas causados pela hiperconexão e vida online crônica. |
-| **Painéis Dedicados** |  | Interfaces distintas para **Usuários Comuns** e **Profissionais** (dashboards dedicados). |
+| Módulo | Descrição |
+| :--- | :--- |
+| **Atendimento Profissional**  Conexão direta para atendimento com profissionais de saúde mental (psicólogos, terapeutas, etc.). |
+| **Diário Emocional**  Ferramenta para o usuário registrar e acompanhar seus sentimentos e estados emocionais ao longo do tempo. |
+| **Base de Conhecimento**  Conteúdo educativo sobre saúde mental, mecanismos de enfrentamento e temas como suicídio e cyberbullying. |
+| **Apoio Digital**  Foco na conscientização e combate aos problemas causados pela hiperconexão e vida online crônica. |
+| **Painéis Dedicados**  Interfaces distintas para **Usuários Comuns** e **Profissionais** (dashboards dedicados). |
 
 ## Arquitetura e Tecnologias
 
